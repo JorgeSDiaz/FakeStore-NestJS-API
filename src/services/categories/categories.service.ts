@@ -1,3 +1,4 @@
+import { CreateCategoryDto, UpdateCategoryDto } from '@dtos/category.dto';
 import { Category } from '@models/category';
 import {
   ConflictException,
@@ -54,7 +55,7 @@ export class CategoriesService {
   }
 
   // Create a new category
-  create(dataCategory: Category): Category {
+  create(dataCategory: CreateCategoryDto): Category {
     const category = this.findCategoryByName(dataCategory.name);
     if (category) {
       throw new ConflictException(
@@ -70,11 +71,11 @@ export class CategoriesService {
     };
     this.categories.push(newCategory);
 
-    return dataCategory;
+    return newCategory;
   }
 
   // Update a category
-  update(id: number, updatesCategory: Category): Category {
+  update(id: number, updatesCategory: UpdateCategoryDto): Category {
     const category = this.find(id);
     if (!category) {
       throw new NotFoundException(`Category with id ${id} not was found`);

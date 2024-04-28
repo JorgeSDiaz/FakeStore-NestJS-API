@@ -1,4 +1,4 @@
-import { CreateCategoryDto } from '@dtos/category.dto';
+import { CreateCategoryDto, UpdateCategoryDto } from '@dtos/category.dto';
 import {
   Body,
   Controller,
@@ -59,7 +59,7 @@ export class CategoriesController {
   @Put(':categoryId')
   updateCategory(
     @Param('categoryId', ParseIntPipe) categoryId: number,
-    @Body() updatesCategory: CreateCategoryDto,
+    @Body() updatesCategory: UpdateCategoryDto,
   ) {
     const category = {
       category: this.categoriesService.update(categoryId, updatesCategory),
