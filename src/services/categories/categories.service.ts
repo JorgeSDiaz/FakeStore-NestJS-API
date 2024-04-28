@@ -12,11 +12,15 @@ export class CategoriesService {
       id: 1,
       name: 'Category 1',
       description: 'Category 1 description',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: 2,
       name: 'Category 2',
       description: 'Category 2 description',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ];
 
@@ -58,7 +62,14 @@ export class CategoriesService {
       );
     }
 
-    this.categories.push(dataCategory);
+    const newCategory: Category = {
+      id: this.categories.length + 1,
+      ...dataCategory,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    this.categories.push(newCategory);
+
     return dataCategory;
   }
 
@@ -69,7 +80,11 @@ export class CategoriesService {
       throw new NotFoundException(`Category with id ${id} not was found`);
     }
 
-    const updatedCategory = { ...category, ...updatesCategory };
+    const updatedCategory = {
+      ...category,
+      ...updatesCategory,
+      updatedAt: new Date(),
+    };
     this.categories = this.categories.map((category) =>
       category.id === id ? updatedCategory : category,
     );
