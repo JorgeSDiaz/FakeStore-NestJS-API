@@ -22,6 +22,14 @@ export class CreateProductDto {
   @IsNumber()
   @IsNotEmpty()
   categoryId: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  brandId: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  CustomerId: number;
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}

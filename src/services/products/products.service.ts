@@ -16,6 +16,10 @@ export class ProductsService {
       description: 'Description 1',
       imageUrl: 'https://via.placeholder.com/150',
       categoryId: 1,
+      brandId: 1,
+      CustomerId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: 2,
@@ -24,6 +28,10 @@ export class ProductsService {
       description: 'Description 2',
       imageUrl: 'https://via.placeholder.com/150',
       categoryId: 2,
+      brandId: 2,
+      CustomerId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ];
 
@@ -65,9 +73,11 @@ export class ProductsService {
       );
     }
 
-    const newProduct = {
+    const newProduct: Product = {
       id: this.products.length + 1,
       ...dataProduct,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
     this.products.push(newProduct);
 
@@ -81,7 +91,11 @@ export class ProductsService {
       throw new NotFoundException(`Product with id ${id} not was found`);
     }
 
-    const updatedProduct = { ...product, ...updatesProduct };
+    const updatedProduct = {
+      ...product,
+      ...updatesProduct,
+      updatedAt: new Date(),
+    };
     this.products = this.products.map((product) =>
       product.id === id ? updatedProduct : product,
     );

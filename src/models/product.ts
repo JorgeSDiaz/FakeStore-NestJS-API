@@ -5,4 +5,8 @@ export interface Product {
   description: string;
   imageUrl: string;
   categoryId: number;
+  brandId: number;
+  CustomerId: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
