@@ -4,32 +4,32 @@ import { IsNotEmpty, IsNumber, IsString, IsUrl } from 'class-validator';
 export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  readonly name: string;
 
   @IsNumber()
   @IsNotEmpty()
-  price: number;
+  readonly price: number;
 
   @IsString()
   @IsNotEmpty()
-  description: string;
+  readonly description: string;
 
   @IsString()
   @IsNotEmpty()
   @IsUrl()
-  imageUrl: string;
+  readonly imageUrl: string;
 
   @IsNumber()
   @IsNotEmpty()
-  categoryId: number;
+  readonly categoryId: number;
 
   @IsNumber()
   @IsNotEmpty()
-  brandId: number;
+  readonly brandId: number;
 
   @IsNumber()
   @IsNotEmpty()
-  CustomerId: number;
+  readonly CustomerId: number;
 }
 
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
